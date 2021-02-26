@@ -31,13 +31,11 @@ public class StudentController {
         studentService.deleteStudent(studentId);
     }
 
-    @PutMapping(path = "emailupdate/{studentId}/{studentEmail}")
-    public void updateEmail(@PathVariable Long studentId, @PathVariable String studentEmail) {
-        studentService.updateStudentEmail(studentId, studentEmail);
+    @PutMapping(path = "{studentId}")
+    public void updateStudent(@PathVariable Long studentId,
+                              @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String name) {
+        studentService.updateStudent(studentId, email, name);
     }
 
-    @PutMapping(path = "nameupdate/{studentId}/{studentName}")
-    public void updateName(@PathVariable Long studentId, @PathVariable String studentName) {
-        studentService.updateStudentName(studentId, studentName);
-    }
 }
